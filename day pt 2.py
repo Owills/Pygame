@@ -57,6 +57,7 @@ class Computer():
 
 
 
+
 def makerects(num):
     for n in range(num):
         tempEnemy = Computer() #makes new rectangle
@@ -116,13 +117,12 @@ while not done:
         square.moveAround()
 
 
-    #if player.colliderect():
-        # player = pygame.draw.rect(screen, black, [x, y, rw, rh])
-
-        # cx = random.random() * (screenw - rw)
-        # cy = random.random() * (screenh - rh)
-        # cxv = random.random() * 20
-         #cyv = random.random() * 20
+        # if player.colliderect(square):
+        #     player = pygame.draw.rect(screen, black, [x, y, rw, rh])
+        #     cx = random.random() * (screenw - rw)
+        #     cy = random.random() * (screenh - rh)
+        #     cxv = random.random() * 20
+        #     cyv = random.random() * 20
 
 
     font = pygame.font.SysFont('Times new roman', 30, True, True)
