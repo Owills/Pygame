@@ -16,16 +16,19 @@ bg = (255, 0, 0)
 black = (0,0,0)
 blue = (1, 164, 239)
 
+playerx = 10
+playery = screenh/2
+
 gap = 80
 
-wall1hieght = random.random()*screenh-gap
+wall1hieght = random.uniform(gap, screenh-gap)
 wall1width = 60
 wall1x = screenw-wall1width
 wall1y = screenh-wall1hieght
 
-wall2hieght = random.random()*screenh-gap
+wall2hieght = random.uniform(gap, screenh-gap)
 wall2width = 60
-wall2x = (screenw-wall1width + screenw/2) + (screenw + wall1width / 2)
+wall2x = (screenw-wall1width + screenw/2) - (screenw + wall1width / 2)
 wall2y = screenh-wall1hieght
 
 
@@ -36,6 +39,15 @@ while not done:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             done = True
+        elif event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_UP:
+                playery = playery - 20
+            elif event.key == pygame.K_DOWN:
+                playery = playery + 20
+            # elif event.key == pygame.K_LEFT:
+            #     xvel = -10
+            # elif event.key == pygame.K_RIGHT:
+            #     xvel = 10
 
 
     screen.fill(black)
@@ -51,19 +63,22 @@ while not done:
     pygame.draw.rect(screen, bg, [wall2x, 0, wall2width, screenh - wall2hieght - gap])
 
 
+    player = pygame.draw.rect(screen, white, [playerx, playery, 20 , 20])
+
+
     wall1x = wall1x - 5
     wall2x = wall2x -5
 
     if wall1x <= 0-wall1width:
         wall1x = screenw
-        wall1hieght = random.random()*screenh-gap
+        wall1hieght = random.uniform(gap, screenh-gap)
         wall1y = screenh-wall1hieght
 
         print "blue" , wall1hieght
 
     if wall2x <= 0-wall2width:
         wall2x = screenw
-        wall2hieght = random.random()*screenh-gap
+        wall2hieght = random.uniform(gap, screenh-gap)
         wall2y = screenh-wall2hieght
 
         print "red" , wall2hieght
