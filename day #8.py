@@ -23,8 +23,8 @@ speed = 2
 
 playerx = 10
 playery = screenh/2
-
-gap = 80
+slow = 5
+gap = 100
 
 wall1hieght = random.uniform(gap, screenh-gap)
 wall1width = 60
@@ -36,8 +36,8 @@ wall2width = 60
 wall2x = (screenw-wall1width + screenw/2) - (screenw + wall1width / 2)
 wall2y = screenh-wall1hieght
 
-bulletx = -100
-bullety = -100
+bulletx = 800
+bullety = 800
 numbullets = 3
 
 wall1visible = True
@@ -62,15 +62,22 @@ while not done:
             elif event.key == pygame.K_DOWN:
                     vel = vel*1.5
             elif event.key == pygame.K_RIGHT:
-                wall1x = wall1x - 20
-                wall2x = wall2x - 20
+                wall1x = wall1x - 40
+                wall2x = wall2x - 40
+            elif event.key == pygame.K_LEFT:
+                if slow >0:
+                    wall1x = wall1x + 10
+                    wall2x = wall2x + 10
+                    slow = slow-1
+                else:
+                    pass
             elif event.key == pygame.K_SPACE:
                 if numbullets >0:
                     bulletx = playerx
                     bullety = playery
                     numbullets = numbullets -1
                 else:
-                    print "no more bullets"
+                    pass
 
 
         elif event.type == pygame.KEYUP:
@@ -174,20 +181,20 @@ while not done:
 
     if bullet.colliderect(wall1) :
         wall1visible = False
-        bulletx = -10
-        bullety = -10
+        bulletx = 800
+        bullety = 800
     if bullet.colliderect(w1):
         w1visible = False
-        bulletx = -10
-        bullety = -10
+        bulletx = 800
+        bullety = 800
     if bullet.colliderect(wall2):
         wall2visible = False
-        bulletx = -10
-        bullety = -10
+        bulletx = 800
+        bullety = 800
     if bullet.colliderect(w2):
         w2visible = False
-        bulletx = -10
-        bullety = -10
+        bulletx = 800
+        bullety = 800
 
 
 
