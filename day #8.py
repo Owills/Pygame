@@ -223,7 +223,11 @@ while not done:
         w2visible = True
 
 
-
+    if playery < 0:
+        playery = 0
+    if playery > screenh-20:
+        playery = screenh-20
+        
     font = pygame.font.SysFont('Times new roman', 30, True, True)
     text = font.render('Score: ' + str(score), True,white)
     screen.blit(text, [0, 0])
